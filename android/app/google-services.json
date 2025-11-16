@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "318699014160",
+    "project_id": "app-flutter-facul",
+    "storage_bucket": "app-flutter-facul.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318699014160:android:1b50e15d06d8651391a295",
+        "android_client_info": {
+          "package_name": "com.example.trabalho_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDD-6JBuOKzbfs8BYi0dWZsyd0Ao0dARM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
