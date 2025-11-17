@@ -49,6 +49,8 @@ dependencies:
   flutter_riverpod: ^3.0.3
   riverpod_annotation: ^3.0.3
 
+  intl: ^0.18.1  # <-- Adicione esta para formatação de datas
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
