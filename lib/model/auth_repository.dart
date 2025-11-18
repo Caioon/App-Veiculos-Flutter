@@ -27,10 +27,15 @@ class AuthRepository {
     String password,
   ) async {
     try {
-      return await _auth.createUserWithEmailAndPassword(
+      final credential = await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+
+      await credential.user?.updateDisplayName(name);
+      await credential.user?.reload();
+
+      return credential;
     } on FirebaseAuthException catch (e) {
       print('Erro de autenticação: ${e.code} - ${e.message}');
       rethrow;
@@ -58,4 +63,3 @@ class AuthRepository {
 final authRepositoryProvider = Provider<AuthRepository>((ref) {
   return AuthRepository(FirebaseAuth.instance);
 });
-
