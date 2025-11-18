@@ -35,25 +35,35 @@ class RegistrarAbastecimentoScreen extends ConsumerWidget {
                     hintText: '2024-12-01',
                   ),
                 ),
+                const SizedBox(height: 16),
                 TextField(
                   controller: litrosController,
                   decoration: const InputDecoration(labelText: 'Quantidade (litros)'),
                   keyboardType: TextInputType.number,
                 ),
+                const SizedBox(height: 16),
                 TextField(
                   controller: valorController,
                   decoration: const InputDecoration(labelText: 'Valor Pago (R\$)'),
                   keyboardType: TextInputType.number,
                 ),
+                const SizedBox(height: 16),
                 TextField(
                   controller: kmController,
                   decoration: const InputDecoration(labelText: 'Quilometragem'),
                   keyboardType: TextInputType.number,
                 ),
+                const SizedBox(height: 16),
                 TextField(
                   controller: consumoController,
                   decoration: const InputDecoration(labelText: 'Consumo'),
                   keyboardType: TextInputType.number,
+                ),
+                const SizedBox(height: 16),
+                TextField(
+                  controller: observacaoController,
+                  decoration: const InputDecoration(labelText: 'Observação (opcional)'),
+                  maxLines: 2,
                 ),
                 const SizedBox(height: 16),
                 DropdownButtonFormField<String>(
@@ -69,11 +79,6 @@ class RegistrarAbastecimentoScreen extends ConsumerWidget {
                       });
                     }
                   },
-                ),
-                TextField(
-                  controller: observacaoController,
-                  decoration: const InputDecoration(labelText: 'Observação (opcional)'),
-                  maxLines: 2,
                 ),
               ],
             ),

@@ -31,14 +31,17 @@ class _MeusVeiculosScreenState extends ConsumerState<MeusVeiculosScreen> {
                   controller: modeloController,
                   decoration: const InputDecoration(labelText: 'Modelo'),
                 ),
+                const SizedBox(height: 16),
                 TextField(
                   controller: marcaController,
                   decoration: const InputDecoration(labelText: 'Marca'),
                 ),
+                const SizedBox(height: 16),
                 TextField(
                   controller: placaController,
                   decoration: const InputDecoration(labelText: 'Placa'),
                 ),
+                const SizedBox(height: 16),
                 TextField(
                   controller: anoController,
                   decoration: const InputDecoration(labelText: 'Ano'),
