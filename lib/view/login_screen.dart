@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:trabalho_flutter/viewmodel/auth_viewmodel.dart';
-import 'package:trabalho_flutter/widgets/base_scaffold.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -27,31 +26,28 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
     final auth = ref.read(authViewModelProvider.notifier);
 
-    await auth.login(
-      emailController.text.trim(),
-      passwordController.text.trim(),
-    );
+    try {
+      await auth.login(
+        emailController.text.trim(),
+        passwordController.text.trim(),
+      );
 
-    final state = ref.read(authViewModelProvider);
-
-    if (state.hasError) {
+      if (!mounted) return;
+      Navigator.pushReplacementNamed(context, '/home');
+    } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Erro ao fazer login: ${state.error}')),
+        SnackBar(content: Text('Email ou Senha incorretos')),
       );
-      return;
     }
-
-    if (!mounted) return;
-    Navigator.pushReplacementNamed(context, '/home');
   }
 
   @override
   Widget build(BuildContext context) {
     final loginState = ref.watch(authViewModelProvider);
 
-    return BaseScaffold(
-      title: 'Login',
+    return Scaffold(
+      appBar: AppBar(title: Text("Login")),
       body: Center(
         child: SizedBox(
           width: 300,
@@ -91,20 +87,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     }
                     return null;
                   },
-                ),
-
-                AnimatedOpacity(
-                  opacity: loginState.hasError ? 1 : 0,
-                  duration: const Duration(milliseconds: 300),
-                  child: loginState.hasError
-                      ? const Padding(
-                          padding: EdgeInsets.only(top: 8),
-                          child: Text(
-                            "E-mail ou senha incorretos",
-                            style: TextStyle(color: Colors.red, fontSize: 14),
-                          ),
-                        )
-                      : const SizedBox.shrink(),
                 ),
 
                 const SizedBox(height: 24),

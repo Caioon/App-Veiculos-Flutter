@@ -1,30 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:trabalho_flutter/viewmodel/auth_viewmodel.dart';
-import 'package:trabalho_flutter/widgets/base_scaffold.dart';
+import 'package:trabalho_flutter/widgets/main_drawer.dart';
 
 class Home extends ConsumerWidget {
   const Home({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final authController = ref.watch(authViewModelProvider.notifier);
+    final userAsync = ref.watch(authViewModelProvider);
 
-    return BaseScaffold(
-      title: "Home",
+    return Scaffold(
+      appBar: AppBar(title: const Text("Home")),
+      drawer: const AppDrawer(),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Bem vindo a home screen!"),
-            ElevatedButton(
-              onPressed: () async {
-                await authController.logout();
-                Navigator.pushReplacementNamed(context, '/login');
-              },
-              child: const Text("Logout"),
-            ),
-          ],
+        child: Text(
+          "Bem vindo à home, ${userAsync.value?.displayName ?? 'usuário'}!",
+          style: const TextStyle(fontSize: 22),
         ),
       ),
     );

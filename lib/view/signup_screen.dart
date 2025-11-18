@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:trabalho_flutter/viewmodel/auth_viewmodel.dart';
-import 'package:trabalho_flutter/widgets/base_scaffold.dart';
 
 class SignupScreen extends ConsumerStatefulWidget {
   const SignupScreen({super.key});
@@ -50,8 +49,8 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
   Widget build(BuildContext context) {
     final signupState = ref.watch(authViewModelProvider);
 
-    return BaseScaffold(
-      title: 'Criar Conta',
+    return Scaffold(
+      appBar: AppBar(title: Text("Criar Conta")),
       body: Center(
         child: SizedBox(
           width: 300,
